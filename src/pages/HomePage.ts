@@ -1,5 +1,6 @@
 import { Page } from '@playwright/test';
 import { BasePage } from './BasePage';
+import { config } from '../support/config';
 
 // Page Object que representa la página principal de la tienda
 export class HomePage extends BasePage {
@@ -15,7 +16,11 @@ export class HomePage extends BasePage {
 
   // Navega a la página principal de OpenCart
   async open(): Promise<void> {
-    await this.navigate('https://opencart.abstracta.us/');
+    const cartUrl = new URL(
+      'index.php?route=checkout/cart',
+      config.baseUrl
+    ).toString();
+    await this.navigate(cartUrl);
   }
 
   // Ingresa el texto en el campo de búsqueda y presiona el botón buscar

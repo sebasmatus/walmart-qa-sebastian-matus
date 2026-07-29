@@ -19,8 +19,8 @@ export class SearchResultsPage extends BasePage {
 
   // Verifica si no hay productos en los resultados (count === 0 tras ejecutar la búsqueda)
   async hasNoResultsMessage(): Promise<boolean> {
-    // OpenCart no muestra un mensaje explícito de "no results"; la ausencia de productos confirma el resultado vacío
-    await this.page.waitForTimeout(500);
+    // Heading confirma que la página de resultados de render
+    await this.page.locator(this.resultHeading).waitFor({ state: 'visible' });
     const count = await this.page.locator(this.resultItems).count();
     return count === 0;
   }
@@ -41,7 +41,7 @@ export class SearchResultsPage extends BasePage {
   }
 
   // Verifica que la lista de resultados sea visible
-  async areResultsVisible(): Promise<boolean> {
+  areResultsVisible(): Promise<boolean> {
     return this.isVisible(this.resultItems);
   }
 }

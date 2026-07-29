@@ -25,8 +25,8 @@ Then('the results should contain at least {int} product', async function (this: 
   expect(resultsCount).toBeGreaterThanOrEqual(count);
 });
 
-// Paso: verifica que se muestre el mensaje de "no hay resultados"
-Then('a no results message should be displayed', async function (this: CustomWorld) {
+// Paso: verifica que no se muestren productos de la búsqueda
+Then('no products should be displayed', async function (this: CustomWorld) {
   const hasNoResults = await this.searchResultsPage.hasNoResultsMessage();
   // Confirma que el mensaje de sin resultados está presente
   expect(hasNoResults).toBe(true);

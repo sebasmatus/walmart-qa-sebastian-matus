@@ -1,15 +1,21 @@
 import { Before, After, BeforeAll, AfterAll, Status } from '@cucumber/cucumber';
-import { Browser, chromium } from '@playwright/test';
+import { Browser, BrowserType, chromium, firefox, webkit } from '@playwright/test';
+import { config, BrowserName } from './config';
 import { CustomWorld } from './world';
 
 // Variable global para almacenar la instancia del navegador compartida entre escenarios
 let browser: Browser;
 
+const browsers: Record<BrowserName, BrowserType> = {
+  chromium, firefox, webkit,
+};
+
 // Hook que se ejecuta una sola vez antes de todos los escenarios: lanza el navegador
 BeforeAll(async function () {
-  const headless = process.env.HEADED !== 'true';
   // Se inicia Chromium en modo headless por defecto; usar HEADED=true para verlo en pantalla
-  browser = await chromium.launch({ headless });
+  browser = await browsers[config.browser].launch({
+    headless: config.headless,
+  });
 });
 
 // Hook que se ejecuta una sola vez después de todos los escenarios: cierra el navegador

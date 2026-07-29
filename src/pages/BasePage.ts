@@ -14,7 +14,7 @@ export class BasePage {
   }
 
   // Retorna el título de la página actual
-  async getTitle(): Promise<string> {
+  getTitle(): Promise<string> {
     return this.page.title();
   }
 
@@ -24,7 +24,7 @@ export class BasePage {
   }
 
   // Verifica si un elemento es visible en la pantalla
-  async isVisible(selector: string): Promise<boolean> {
+  isVisible(selector: string): Promise<boolean> {
     return this.page.locator(selector).isVisible();
   }
 

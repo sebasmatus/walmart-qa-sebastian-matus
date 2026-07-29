@@ -188,8 +188,10 @@ Tras la ejecución se generan dos archivos en la carpeta `reports/`:
 
 ## Variables de entorno
 
-| Variable | Valor por defecto | Descripción |
+| Variable | Valores por defecto | Descripción |
 |---|---|---|
+| `BASE_URL` | https://opencart.abstracta.us | Ambiente de ejecución |
+| `BROWSER` | chromium | Navegadores: `chromium`, `firefox` o `webkit` | 
 | `HEADED` | `false` | Establecer en `true` para ejecutar con el navegador visible |
 
 Ejemplo para PowerShell:

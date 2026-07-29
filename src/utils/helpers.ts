@@ -10,12 +10,12 @@ export function generatePhone(): string {
   return String(number);
 }
 
-// Pausa la ejecución por la cantidad de milisegundos indicada
+// [Deprecado] Pausa la ejecución por la cantidad de milisegundos indicada
 export function sleep(ms: number): Promise<void> {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-// Formatea una fecha como string legible para usar en datos de prueba
+// [Deprecado] Formatea una fecha como string legible para usar en datos de prueba
 export function formatDate(date: Date): string {
   return date.toISOString().split('T')[0];
 }

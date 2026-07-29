@@ -16,7 +16,7 @@ Feature: Product Search
   Scenario: Search for a product with no results
     When the user searches for "xyzproductnotexist123"
     Then the search results page should be displayed
-    And a no results message should be displayed
+    And no products should be displayed
 
   @search
   Scenario: Search results display correct product information
