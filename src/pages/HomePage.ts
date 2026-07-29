@@ -6,9 +6,7 @@ export class HomePage extends BasePage {
   // Selectores de la página principal
   private readonly searchInput = 'input[name="search"]';
   private readonly searchButton = '#search button';
-  private readonly navbarLinks = '#menu .nav > li > a';
   private readonly featuredProducts = '#content .product-layout';
-  private readonly cartButton = '#cart > button';
   private readonly accountMenu = 'a[title="My Account"]';
 
   constructor(page: Page) {

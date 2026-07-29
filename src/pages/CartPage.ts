@@ -8,7 +8,6 @@ export class CartPage extends BasePage {
   private readonly productNameInCart = '#content .table-responsive tbody tr td:nth-child(2) a';
   private readonly removeButton = '#content .table-responsive tbody tr td button.btn-danger';
   private readonly checkoutButton = 'a[href*="checkout/checkout"]';
-  private readonly emptyCartHeading = '#content h2';
 
   constructor(page: Page) {
     super(page);

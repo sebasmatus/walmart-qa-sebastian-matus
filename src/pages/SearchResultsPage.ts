@@ -6,12 +6,7 @@ export class SearchResultsPage extends BasePage {
   // Selectores de la página de resultados
   private readonly resultItems = '#content .product-layout';
   private readonly resultHeading = '#content h1';
-  private readonly noResultsMessage = '#content p';
   private readonly productName = '.caption h4 a';
-  private readonly productPrice = '.caption .price';
-  private readonly sortSelect = '#input-sort';
-  private readonly addToCartButton = (index: number) =>
-    `#content .product-layout:nth-child(${index}) button[onclick*="cart.add"]`;
 
   constructor(page: Page) {
     super(page);
