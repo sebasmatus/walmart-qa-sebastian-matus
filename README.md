@@ -100,7 +100,7 @@ walmart-qa-challenge/
 
 1. Clonar el repositorio:
    ```bash
-   git clone <AGREGAR URL DEL REPOSITORIO>
+   git clone https://github.com/sebasmatus/walmart-qa-sebastian-matus
    cd walmart-qa-challenge
    ```
 
@@ -139,7 +139,7 @@ npm run test:report
 
 El reporte queda disponible en: `reports/cucumber-report.html`
 
-### Ejecutar solo los tests de humo (smoke tests)
+### Ejecutar solo pruebas de humo (smoke tests)
 
 ```bash
 npx cucumber-js --tags "@smoke"
@@ -192,12 +192,12 @@ Tras la ejecución se generan dos archivos en la carpeta `reports/`:
 |---|---|---|
 | `HEADED` | `false` | Establecer en `true` para ejecutar con el navegador visible |
 
-Ejemplo de uso en PowerShell:
+Ejemplo para PowerShell:
 ```powershell
 $env:HEADED="true"; npm test
 ```
 
-Ejemplo de uso en Bash/macOS/Linux:
+Ejemplo para Bash/macOS/Linux:
 ```bash
 HEADED=true npm test
 ```
@@ -222,7 +222,7 @@ walmart-qa-challenge/
 │   ├── settings.json
 ```
 
-- Agregar la siguiente configuración al archivo `settings.json`, guardar y posterior reiniciar IDE.
+- Agregar la siguiente configuración al archivo `settings.json`, guardar, y posteriormente reiniciar IDE para aplicar los cambios.
 
 ```json
 {
@@ -235,3 +235,5 @@ walmart-qa-challenge/
   ]
 }
 ```
+
+*Creado por **Sebastián Matus** para Walmart Chile - Desafío QA Automation III - Julio 2026*

@@ -42,7 +42,8 @@ Then('a success notification should be displayed', async function (this: CustomW
 Then('the cart should contain {int} item', async function (this: CustomWorld, expectedCount: number) {
   // Se valida que el contador del carrito refleje la cantidad esperada
   const cartText = await this.page.locator('#cart > button').textContent();
-  expect(cartText).toContain(String(expectedCount));
+  const itemCount = cartText?.match(/(\d+)\s+item\(s\)/)?.[1];
+  expect(itemCount).toBe(String(expectedCount));
 });
 
 // Paso: verifica que el carrito no esté vacío después de agregar un producto
@@ -56,7 +57,17 @@ Then('the shopping cart should not be empty', async function (this: CustomWorld)
 Then('the cart should display the product that was added', async function (this: CustomWorld) {
   const productInCart = await this.cartPage.getFirstProductName();
   // El nombre del producto en el carrito debe coincidir con el producto seleccionado
-  expect(productInCart.toLowerCase()).toContain(
-    this.lastProductName.split(' ')[0].toLowerCase()
+  const normalizeText = (value: string ) =>
+    value.replace(/\s+/g, '').trim().toLowerCase();
+  expect(normalizeText(productInCart)).toBe(
+    normalizeText(this.lastProductName)
   );
+});
+
+// Paso: verifica la cantidad del producto 
+Then('the first product in the cart should have quantity {int}', async function (
+  this: CustomWorld, expectedQuantity: number
+) {
+  const actualQuantity = await this.cartPage.getFirstProductQuantity();
+  expect(actualQuantity).toBe(expectedQuantity);
 });

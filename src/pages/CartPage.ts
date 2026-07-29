@@ -29,6 +29,14 @@ export class CartPage extends BasePage {
     return (await this.page.locator(this.productNameInCart).first().textContent()) ?? '';
   }
 
+  // Verifica la cantidad del primer producto en el carrito
+  async getFirstProductQuantity(): Promise<number> {
+    const quantity = await this.page
+      .locator('#content .table-responsive tbody tr input[name^="quantity"]')
+      .first().inputValue();
+    return Number(quantity);
+  }
+
   // Verifica si el carrito está vacío comprobando que no haya filas de productos
   async isCartEmpty(): Promise<boolean> {
     // Un carrito vacío no tiene filas en la tabla; se confirma con count === 0

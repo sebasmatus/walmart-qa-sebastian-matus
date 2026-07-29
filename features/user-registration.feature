@@ -18,7 +18,7 @@ Feature: User Registration
   Scenario: Registration fails when required fields are missing
     When the user navigates to the registration page
     And the user submits the registration form without filling any fields
-    Then an error message should be displayed on the registration page
+    Then an error message containing "Warning: You must agree to the Privacy Policy!" should be displayed
 
   @registration
   Scenario: Registration fails with mismatched passwords
@@ -26,4 +26,4 @@ Feature: User Registration
     And the user fills in the registration form with mismatched passwords
     And the user accepts the privacy policy
     And the user submits the registration form
-    Then an error message should be displayed on the registration page
+    Then an error message containing "Password confirmation does not match password!" should be displayed

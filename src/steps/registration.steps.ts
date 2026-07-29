@@ -58,8 +58,9 @@ Then('the account creation success page should be displayed', async function (th
 });
 
 // Paso: verifica que se muestre al menos un mensaje de error en el formulario
-Then('an error message should be displayed on the registration page', async function (this: CustomWorld) {
-  const hasError = await this.registerPage.hasError();
+Then('an error message containing {string} should be displayed',
+  async function (this: CustomWorld, expectedMessage: string) {
+    const errorText = await this.registerPage.getAllErrorTexts();
   // Debe existir un mensaje de error visible cuando los datos son inválidos
-  expect(hasError).toBe(true);
+  expect(errorText).toContain(expectedMessage);
 });

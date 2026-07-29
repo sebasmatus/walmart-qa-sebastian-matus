@@ -21,6 +21,8 @@ Feature: Add Product to Cart
     And the user sets the quantity to 2
     And the user adds the product to the cart
     Then a success notification should be displayed
+    When the user navigates to the shopping cart
+    Then the first product in the cart should have quantity 2
 
   @cart
   Scenario: View cart after adding a product

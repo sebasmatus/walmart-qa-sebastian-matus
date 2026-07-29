@@ -10,8 +10,6 @@ export class RegisterPage extends BasePage {
   private readonly phoneInput = '#input-telephone';
   private readonly passwordInput = '#input-password';
   private readonly passwordConfirmInput = '#input-confirm';
-  private readonly newsletterYesRadio = 'input[name="newsletter"][value="1"]';
-  private readonly newsletterNoRadio = 'input[name="newsletter"][value="0"]';
   private readonly privacyPolicyCheckbox = 'input[name="agree"]';
   private readonly submitButton = 'input[type="submit"]';
   private readonly successContent = '#content p';
@@ -94,9 +92,9 @@ export class RegisterPage extends BasePage {
   }
 
   // Retorna el texto del mensaje de error (alert o campo)
-  async getErrorText(): Promise<string> {
-    const alertVisible = await this.page.locator(this.errorAlert).isVisible().catch(() => false);
-    if (alertVisible) return this.getText(this.errorAlert);
-    return this.getText(this.fieldError);
+  async getAllErrorTexts(): Promise<string> {
+    const errorMessages = this.page.locator(`${this.errorAlert}, ${this.fieldError}`);
+    const texts = await errorMessages.allTextContents();
+    return texts.join(' ');
   }
 }
