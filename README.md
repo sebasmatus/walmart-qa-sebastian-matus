@@ -1,5 +1,8 @@
 # Walmart Chile – Automatización de Pruebas Funcionales
 
+![Tests](https://github.com/sebastian-matus/walmart-qa-sebastian-matus/actions/workflows/tests.yml/badge.svg)
+
+
 Proyecto de automatización de pruebas funcionales sobre la plataforma [OpenCart Demo](https://opencart.abstracta.us/), desarrollado como parte del desafío técnico para el rol de Automatizador QA en Walmart Chile.
 
 ## Consideración Importante para la revisión del desafío.

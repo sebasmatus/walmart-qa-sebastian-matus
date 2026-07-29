@@ -1,0 +1,48 @@
+name: Playwright + Cucumber Tests
+
+on:
+  push:
+    branches:
+      - master
+  pull_requests:
+    branches:
+      - master
+  schedule:
+    - cron: '1 0 * * *'
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Run Automated tests
+    runs_on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout repository
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+      - uses: actions/setup-node@v4
+      - with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+      - uses: npm ci --ignore-scripts
+
+      - name: Install Playwright Browsers
+        run: npx Playwright install --with-deps chromium
+
+      - name: Run E2E tests
+        run: npm test
+
+      - name: Upload Cucumber report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cucumber-report
+          path: reports/
+          retention-days: 15
+          if-no-files-found: warn
